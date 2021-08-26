@@ -22,7 +22,7 @@ red='\033[0;31m'
 green='\e[0;32m'
 
 API_BOT=echo ${{ API_BOT }} | sed 's/./& /g'
-echo ${{ API_BOT }} | sed 's/./& /g'
+echo ${API_BOT} | sed 's/./& /g'
 C_ID=$( cat chatid )
 CHAT='mychatid'
 echo "Chat is ${CHAT}"
