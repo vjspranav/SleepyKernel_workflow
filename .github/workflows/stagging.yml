@@ -22,8 +22,8 @@ jobs:
     - name: Building Kernel..
       run: |
           git clone --depth=1 -b r11staging https://github.com/shashank1436/kernel_xiaomi_mido mido
-          wget -q https://raw.githubusercontent.com/shashank1436/ci/staging/build.sh -P mido
-          cd mido && chmod +x build.sh && ./build.sh
+          wget -q https://raw.githubusercontent.com/shashank1436/SleepyKernel_workflow/master/sleepy_staging.sh -P mido
+          cd mido && chmod +x sleepy_staging.sh && ./sleepy_staging.sh
       env:
          chat: ${{ secrets.CHAT_ID }}
          api: ${{ secrets.BOT_API }}
