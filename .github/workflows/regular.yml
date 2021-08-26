@@ -1,4 +1,4 @@
-name: Sleepy-Regular!
+name: Sleepy_Regular!
 on:
   workflow_dispatch:
 
@@ -25,5 +25,5 @@ jobs:
           wget -q https://raw.githubusercontent.com/shashank1436/ci/main/build.sh -P mido
           cd mido && chmod +x build.sh && ./build.sh
       env:
-         CHATID: ${{ secrets.CHAT_ID }}
-         API_BOT: ${{ secrets.BOT_API }}
+         chat: ${{ secrets.CHAT_ID }}
+         api: ${{ secrets.BOT_API }}

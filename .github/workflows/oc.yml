@@ -1,4 +1,4 @@
-name: Sleepy-OC!
+name: Sleepy_OC!
 on:
   workflow_dispatch:
 
