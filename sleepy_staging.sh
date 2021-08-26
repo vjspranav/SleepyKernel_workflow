@@ -65,10 +65,10 @@ DEFCONFIG="mido_defconfig"
 BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
 BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
 
-echo $BOT_MSG_URL
-echo $BOT_BUILD_URL
-echo $API_BOT
-echo $CHATID
+echo "$BOT_MSG_URL"
+echo "$BOT_BUILD_URL"
+echo "$API_BOT"
+echo "$CHATID"
 
 # tg_post_msg() {
 #         curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
