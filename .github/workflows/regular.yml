@@ -1,4 +1,4 @@
-name: Sleepy-stagging!
+name: Sleepy-Regular!
 on:
   workflow_dispatch:
 
@@ -22,7 +22,7 @@ jobs:
     - name: Building Kernel..
       run: |
           git clone --depth=1 -b r11staging https://github.com/shashank1436/kernel_xiaomi_mido mido
-          wget -q https://raw.githubusercontent.com/shashank1436/ci/staging/build.sh -P mido
+          wget -q https://raw.githubusercontent.com/shashank1436/ci/main/build.sh -P mido
           cd mido && chmod +x build.sh && ./build.sh
       env:
          CHATID: ${{ secrets.CHAT_ID }}
