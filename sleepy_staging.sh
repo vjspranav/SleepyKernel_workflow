@@ -21,6 +21,9 @@ white='\033[0m'
 red='\033[0;31m'
 green='\e[0;32m'
 
+APIBOT=$( cat botapi )
+C_ID=$( cat chatid )
+
 # Deleting out "kernel complied" and zip "anykernel" from an old compilation
 echo -e "$green << cleanup >> \n $white"
 
@@ -62,13 +65,13 @@ KRNL_REL_TAG="v7"
 DEFCONFIG="mido_defconfig"
 
 # setup telegram env
-BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
-BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
+BOT_MSG_URL="https://api.telegram.org/bot$APIBOT/sendMessage"
+BOT_BUILD_URL="https://api.telegram.org/bot$APIBOT/sendDocument"
 
 echo "$BOT_MSG_URL"
 echo "$BOT_BUILD_URL"
-echo "$API_BOT"
-echo "$CHATID"
+echo "$APIBOT"
+echo "$C_ID"
 
 # tg_post_msg() {
 #         curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
