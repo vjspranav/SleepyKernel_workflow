@@ -21,7 +21,7 @@ white='\033[0m'
 red='\033[0;31m'
 green='\e[0;32m'
 
-APIBOT=$( cat botapi )
+APIBOT=$( cat .env.production )
 C_ID=$( cat chatid )
 
 # Deleting out "kernel complied" and zip "anykernel" from an old compilation
