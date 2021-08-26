@@ -22,8 +22,8 @@ jobs:
     - name: Building Kernel..
       run: |
           cp sleepy_staging.sh mido && cd mido && chmod +x sleepy_staging.sh
-          'echo "CHATID" > chatid'
-          'echo "API_BOT" > botapi'
+          echo "$CHATID" > chatid
+          echo "$ `API_BOT" > botapi
           bash sleepy_staging.sh
       shell: bash
       env:
