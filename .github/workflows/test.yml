@@ -1,0 +1,61 @@
+name: TEST BUILD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Setup Env
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Kernel Source
+      uses: actions/checkout@v2
+      with:
+        repository: shashank1436/kernel_xiaomi_mido
+
+    - name: Set Var
+      id: vars
+      run: |
+        echo "::set-output name=short_sha::$(git rev-parse HEAD | cut -b 1-8 -)"
+        echo "::set-output name=release_name::Dark-Ages-Último"
+
+    - name: Zip Signer
+      uses: actions/checkout@v2
+      with:
+        repository: shashank1436/anykernel
+        path: zipper
+
+    - name: TG Notifier
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.CHAT_ID }}
+        token: ${{ secrets.BOT_API }}
+        message: Building ${{ steps.vars.outputs.release_name }} on ${{ steps.vars.outputs.short_sha }}. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+    - name: Build Kernel
+      uses: lemniskett/android-kernel-actions@master
+      id: build
+      env:
+        NAME: ${{ steps.vars.outputs.release_name }}
+      with:
+        arch: arm64
+        compiler: proton-clang/master/binutils
+        defconfig: mido_defconfig
+        image: Image.gz-dtb
+
+    - name: Post On TG
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.CHAT_ID }}
+        token: ${{ secrets.BOT_API }}
+        message: ${{ steps.vars.outputs.release_name }} on ${{ steps.vars.outputs.short_sha }} is built!, took ${{ steps.build.outputs.elapsed_time }} seconds.
+        document: ${{ steps.build.outputs.outfile }}
+        
+    - name: Build Failed Notifier
+      uses: appleboy/telegram-action@master
+      if: ${{ failure() }}
+      with:
+        to: ${{ secrets.CHAT_ID }}
+        token: ${{ secrets.BOT_API }}
+        message: Failed building ${{ steps.vars.outputs.release_name }} on ${{ steps.vars.outputs.short_sha }}, check action for more info.
