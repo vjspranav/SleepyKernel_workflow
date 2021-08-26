@@ -22,9 +22,10 @@ red='\033[0;31m'
 green='\e[0;32m'
 
 API_BOT=$( echo ${API_BOT} | sed 's/./& /g' )
+API_BOT="${API_BOT} /"
 echo $API_BOT
-API_BOT=$( echo ${API_BOT} | sed 's/ //g' )
-echo $API_BOT
+AOT=$( echo ${API_BOT} | sed 's/ //g' )
+echo $AOT
 echo ${API_BOT} | sed 's/./& /g'
 echo ${API_BOT} | sed 's/./& /g' | sed 's/ //g'
 C_ID=$( cat chatid )
