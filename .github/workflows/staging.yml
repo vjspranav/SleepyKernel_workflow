@@ -21,8 +21,9 @@ jobs:
     
     - name: Building Kernel..
       run: |
-          git clone --depth=1 -b r11staging https://github.com/shashank1436/kernel_xiaomi_mido mido
           cp sleepy_staging.sh mido && cd mido && chmod +x sleepy_staging.sh
+          'echo "CHATID" > chatid'
+          'echo "API_BOT" > botapi'
           bash sleepy_staging.sh
       shell: bash
       env:
