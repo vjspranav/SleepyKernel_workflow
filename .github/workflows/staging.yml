@@ -22,9 +22,12 @@ jobs:
     - name: Building Kernel..
       run: |
           cp sleepy_staging.sh mido && cd mido && chmod +x sleepy_staging.sh
-          base64 -i .env.production
-          echo ${{ secrets.CHAT_ID }} | base64 -d > .env.production
-          echo ${{ secrets.BOT_API }} | base64 -d > .env.production
+          touch chatid
+          touch botapi
+          base64 -i chatid
+          base64 -i botapi
+          echo ${{ secrets.CHAT_ID }} | base64 -d > chatid
+          echo ${{ secrets.BOT_API }} | base64 -d > botapi
           bash sleepy_staging.sh
       shell: bash
       env:
