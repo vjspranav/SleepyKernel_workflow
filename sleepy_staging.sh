@@ -72,8 +72,8 @@ USEER="shashank"
 TOOLCHAIN="clang"
 
 # setup telegram env
-export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
-export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
+export BOT_MSG_URL="https://api.telegram.org/bot/$API_BOT/sendMessage"
+export BOT_BUILD_URL="https://api.telegram.org/bot/$API_BOT/sendDocument"
 
 tg_post_msg() {
         curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
